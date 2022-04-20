@@ -1,0 +1,74 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>TIM ui</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+    <script src="libs/conf.js"></script>
+    <script src="libs/tim-ui.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="icon" href="favicon.ico" />
+</head>
+<body>
+
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <h5 class="my-0 mr-md-auto font-weight-normal">Twitter images clustering viz</h5>
+    <div class="my-0 mr-md-auto font-weight-normal">
+        <button onclick="filterAndSort()">filter</button> :
+        nb. images <input type="number" min="1" value="1" id="filter-images"/>
+        nb. tweets <input type="number" min="1" value="1" id="filter-tweets"/>
+        quality    <input type="number" min="0" value="0" id="filter-quality"/>
+    </div>
+    <div class="my-0 mr-md-auto font-weight-normal">sort on :
+        <button onclick="sortOn('nb_images')">nb. images</button>
+        <button onclick="sortOn('nb_seen')">tweets</button>
+        <button onclick="sortOn('match_quality')">quality</button>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div id="clusters" class="container-fluid text-center">
+    Loading clusters, please wait ...
+    </div>
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="row">
+            <div class="col-12 col-md">
+                <small class="d-block mb-3 text-muted"><a href="http://www.herve.name">Nicolas Herv&eacute;</a>, 2018-2022</small>
+            </div>
+        </div>
+    </footer>
+</div>
+
+
+<div id="showClusterModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+     aria-labelledby="showClusterModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="clusterTitle">...</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="clusterImages">
+                ...
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+body {
+
+}
+
+.modal-xl {
+    max-width: 90%;
+}
+
+.cluster-item {
+    cursor: pointer;
+}
+
+.thumbnail {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border: solid 1px #cacaca;
+    margin: 10px auto;
+    display: block;
+}
+
+.thumbnail .loaded {
+
+}
+
+.zoomContainer,
+.zoomLens,
+.zoomWindowContainer div {
+    z-index: 2000 !important;
+}
+
+.thumbnail img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 100%;
+    width: auto;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.thumbnail img.portrait {
+    width: 100%;
+    height: auto;
+}
+
+.very_small {
+    font-family: Arial;
+    font-size: 6px;
+}
