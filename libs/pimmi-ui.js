@@ -81,13 +81,19 @@ let sortCrit = 'nbMatch'
 let filtImages = 1
 let filtTweets = 1
 let jqxhr = $.getJSON(DATA_FILE, function () {
-    console.log("success");
+    // console.log("success");
 }).fail(function () {
-    console.log("error");
+    // console.log("error");
 }).always(function () {
-    console.log("complete");
+    // console.log("complete");
 }).done(function (data) {
+    // console.log("done");
     rawJson = data;
+
+    for(var c = 0; c < rawJson.length; c++) {
+        rawJson[c].nb_images = rawJson[c].images.length
+    }
+
     generateFullHTML(rawJson)
 });
 
