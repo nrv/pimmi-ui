@@ -1,22 +1,22 @@
-<html>
+<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <title>PIMMI ui</title>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-            crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-            crossorigin="anonymous"></script>
-    <script src="libs/conf.js"></script>
-    <script src="libs/pimmi-ui.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" crossorigin="anonymous"></script>-->
+<!--    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>-->
+<!--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"-->
+<!--            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"-->
+<!--            crossorigin="anonymous"></script>-->
+    <script type="text/javascript" src="dist/jquery_3.3.1.min.js"></script>
+    <script type="text/javascript" src="dist/lozad.min.js"></script>
+    <script type="text/javascript" src="dist/bootstrap_4.1.3.min.js"></script>
+    <script type="text/javascript" src="libs/conf.js"></script>
+    <script type="text/javascript" src="libs/pimmi-ui.js"></script>
 
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"-->
+<!--          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="dist/bootstrap_4.1.3.min.css">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="icon" href="favicon.ico" />
 </head>
@@ -27,12 +27,12 @@
     <div class="my-0 mr-md-auto font-weight-normal">
         <button onclick="filterAndSort()">filter</button> :
         nb. images <input type="number" min="1" value="1" id="filter-images"/>
-        nb. tweets <input type="number" min="1" value="1" id="filter-tweets"/>
+        <!-- nb. tweets <input type="number" min="1" value="1" id="filter-tweets"/> -->
         quality    <input type="number" min="0" value="0" id="filter-quality"/>
     </div>
     <div class="my-0 mr-md-auto font-weight-normal">sort on :
         <button onclick="sortOn('nb_images')">nb. images</button>
-        <button onclick="sortOn('nb_seen')">tweets</button>
+        <!-- <button onclick="sortOn('nb_seen')">tweets</button> -->
         <button onclick="sortOn('match_quality')">quality</button>
     </div>
 </div>
@@ -44,7 +44,10 @@
     <footer class="pt-4 my-md-5 pt-md-5 border-top">
         <div class="row">
             <div class="col-12 col-md">
-                <small class="d-block mb-3 text-muted"><a href="http://www.herve.name">Nicolas Herv&eacute;</a>, 2018-2022</small>
+                <small class="d-block mb-3 text-muted">
+                    <a href="http://https://github.com/nrv/pimmi">Pimmi</a> &amp;
+                    <a href="http://https://github.com/nrv/pimmi-ui">Pimmi UI</a>, 2022-2023
+                </small>
             </div>
         </div>
     </footer>

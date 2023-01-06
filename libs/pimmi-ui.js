@@ -2,9 +2,13 @@ function generateContainerHTML() {
     return $("<div>", {'class': 'row'});
 }
 
-function generateSingleImageHTML(imageId) {
+function generateSingleImageHTML(imageId, withLink) {
     let imgurl = MEDIA_SERVER_URI + imageId;
-    return "<div><div class='thumbnail'><img class='lozad' data-src=\"" + imgurl + "\"/></div><div class='very_small'>" + imageId + "</div></div>";
+    if (withLink) {
+        return "<div><div class='thumbnail'><a target='_blank' href='" + imgurl + "'><img class='lozad' data-src=\"" + imgurl + "\"/></a></div><div class='very_small'>" + imageId + "</div></div>";
+    } else {
+        return "<div><div class='thumbnail'><img class='lozad' data-src=\"" + imgurl + "\"/></div><div class='very_small'>" + imageId + "</div></div>";
+    }
 }
 
 function openCluster(e) {
@@ -15,7 +19,7 @@ function openCluster(e) {
     $('#clusterImages').empty();
     let c = generateContainerHTML();
     for (let i = 0; i < listOfImages.length; i++) {
-        c.append(generateSingleImageHTML(listOfImages[i]));
+        c.append(generateSingleImageHTML(listOfImages[i], true));
     }
     $('#clusterImages').append(c);
     observer.observe();
@@ -25,10 +29,12 @@ function generateClusterHTML(clusterData) {
     let item = $("<div>", {'class': 'col justify-content-between align-items-center cluster-item'});
     item.data('images', clusterData['images']);
     let q = Math.round(100 * clusterData['match_quality'])
-    item.data('title', "Cluster " + (clusterData['cluster']) + ", " + (clusterData['nb_images']) + " images, " + (clusterData['nb_seen']) + " tweets, quality : " + q);
+    // item.data('title', "Cluster " + (clusterData['cluster']) + ", " + (clusterData['nb_images']) + " images, " + (clusterData['nb_seen']) + " tweets, quality : " + q);
+    item.data('title', "Cluster " + (clusterData['cluster']) + ", " + (clusterData['nb_images']) + " images, quality : " + q);
     item.append("<h4 class=\"my-0 font-weight-normal\">Cluster " + clusterData['cluster'] + "</h4>");
-    item.append("<span class='badge badge-primary badge-pill'>" + (clusterData['nb_images']) + " img / " + (clusterData['nb_seen']) + " twt / " + q + "</span>");
-    item.append(generateSingleImageHTML(clusterData['sample_path']));
+    // item.append("<span class='badge badge-primary badge-pill'>" + (clusterData['nb_images']) + " img / " + (clusterData['nb_seen']) + " twt / " + q + "</span>");
+    item.append("<span class='badge badge-primary badge-pill'>" + (clusterData['nb_images']) + " img / " + q + "</span>");
+    item.append(generateSingleImageHTML(clusterData['sample_path'], false));
     return item;
 }
 
@@ -50,15 +56,18 @@ function generateFullHTML(filteredAnSortedData) {
 
 function filterAndSort() {
     let filtImages = parseInt(document.getElementById('filter-images').value);
-    let filtTweets = parseInt(document.getElementById('filter-tweets').value);
+    // let filtTweets = parseInt(document.getElementById('filter-tweets').value);
     let filtQuality = parseInt(document.getElementById('filter-quality').value);
 
-    console.log("filterAndSort [" + rawJson.length + " - " + sortCrit + ", " + filtImages + ", " + filtTweets + ", " + filtQuality + "] ...");
+    // console.log("filterAndSort [" + rawJson.length + " - " + sortCrit + ", " + filtImages + ", " + filtTweets + ", " + filtQuality + "] ...");
+    console.log("filterAndSort [" + rawJson.length + " - " + sortCrit + ", " + filtImages + ", " + filtQuality + "] ...");
     let finalJson = rawJson
-    if (filtImages > 1 || filtTweets > 1 || filtQuality > 0) {
+    // if (filtImages > 1 || filtTweets > 1 || filtQuality > 0) {
+    if (filtImages > 1 || filtQuality > 0) {
         console.log("... filtering");
         finalJson = finalJson.filter(function (entry) {
-            return (entry['nb_images'] >= filtImages) && (entry['nb_seen'] >= filtTweets) && (100 * entry['match_quality'] >= filtQuality);
+            // return (entry['nb_images'] >= filtImages) && (entry['nb_seen'] >= filtTweets) && (100 * entry['match_quality'] >= filtQuality);
+            return (entry['nb_images'] >= filtImages) && (100 * entry['match_quality'] >= filtQuality);
         });
     }
 
